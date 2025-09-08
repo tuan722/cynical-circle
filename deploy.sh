@@ -81,8 +81,19 @@ fi
 # 6. Настройка базы данных
 log "Настройка базы данных..."
 cd $APP_DIR/database
-chmod +x setup.sh
-./setup.sh $DB_NAME $DB_USER $DB_PASSWORD localhost 5432
+chmod +x setup.sh setup-no-password.sh fix-postgres-connection.sh
+
+# Пробуем сначала обычный способ
+if ./setup.sh $DB_NAME $DB_USER $DB_PASSWORD localhost 5432; then
+    log "База данных настроена обычным способом"
+else
+    warn "Обычный способ не сработал, пробуем альтернативный..."
+    if ./setup-no-password.sh $DB_NAME $DB_USER $DB_PASSWORD localhost 5432; then
+        log "База данных настроена альтернативным способом"
+    else
+        error "Не удалось настроить базу данных. Запустите: sudo ./fix-postgres-connection.sh"
+    fi
+fi
 
 # 7. Настройка Python окружения
 log "Настройка Python окружения..."

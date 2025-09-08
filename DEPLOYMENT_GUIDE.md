@@ -61,7 +61,7 @@ GRANT ALL PRIVILEGES ON DATABASE cynical_circle TO cynical_app;
 
 ```bash
 # Клонирование репозитория (или загрузка файлов)
-git clone <your-repo-url> /opt/cynical-circle
+git clone https://github.com/tuan722/cynical-circle.git /opt/cynical-circle
 cd /opt/cynical-circle
 
 # Настройка базы данных

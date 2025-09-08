@@ -81,9 +81,23 @@ sudo journalctl -u cynical-circle -f   # Логи
 
 ## 🆘 Помощь
 
+### Если возникли проблемы с PostgreSQL:
+```bash
+# Автоматическое исправление
+sudo ./fix-postgres-connection.sh
+
+# Альтернативная настройка БД
+cd database
+sudo ./setup-no-password.sh
+```
+
+### Общая диагностика:
 - **Логи**: `docker-compose logs` или `journalctl -u cynical-circle`
 - **Статус**: `docker-compose ps` или `systemctl status cynical-circle`
 - **Мониторинг**: `./monitor.sh` (Docker) или `htop` (нативная)
+
+### Подробное решение проблем:
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - полное руководство по решению проблем
 
 ## 📚 Документация
 

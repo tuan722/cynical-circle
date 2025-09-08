@@ -24,8 +24,19 @@ if ! command -v psql &> /dev/null; then
 fi
 
 # Проверяем подключение к PostgreSQL
+echo "🔍 Проверка подключения к PostgreSQL..."
 if ! psql -h $DB_HOST -p $DB_PORT -U postgres -c '\q' 2>/dev/null; then
     echo "❌ Не удается подключиться к PostgreSQL. Проверьте настройки подключения."
+    echo "🔧 Попробуйте запустить скрипт исправления: sudo ./fix-postgres-connection.sh"
+    echo ""
+    echo "Возможные причины:"
+    echo "1. PostgreSQL не запущен"
+    echo "2. Неправильные настройки аутентификации"
+    echo "3. Проблемы с конфигурацией"
+    echo ""
+    echo "Для диагностики выполните:"
+    echo "sudo systemctl status postgresql"
+    echo "sudo -u postgres psql -c 'SELECT version();'"
     exit 1
 fi
 
