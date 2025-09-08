@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cynical Circle - Социальная сеть для циников</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>🤔 Cynical Circle</h1>
+                    <p>Место, где цинизм встречается с социальными сетями</p>
+                </div>
+                <nav class="header-nav">
+                    <button id="loginBtn" class="nav-btn">Войти</button>
+                    <button id="registerBtn" class="nav-btn">Регистрация</button>
+                    <button id="postsBtn" class="nav-btn" style="display: none;">Посты</button>
+                    <button id="createPostBtn" class="nav-btn" style="display: none;">Создать пост</button>
+                    <button id="profileBtn" class="nav-btn" style="display: none;">Профиль</button>
+                    <button id="logoutBtn" class="nav-btn" style="display: none;">Выйти</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Хлебные крошки -->
+            <nav id="breadcrumbs" class="breadcrumbs" style="display: none;">
+                <a href="/" class="breadcrumb-link">Главная</a>
+                <span class="breadcrumb-separator">›</span>
+                <span id="currentPage" class="breadcrumb-current">Текущая страница</span>
+            </nav>
+
+            <!-- Форма входа -->
+            <div id="loginForm" class="form-container" style="display: none;">
+                <h2>Вход в систему</h2>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginUserId">ID пользователя:</label>
+                        <input type="text" id="loginUserId" placeholder="Введите ID пользователя" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+                
+                <!-- Список пользователей -->
+                <div id="usersList" class="users-list">
+                    <!-- Список пользователей будет загружен динамически -->
+                </div>
+            </div>
+
+            <!-- Форма регистрации -->
+            <div id="registerForm" class="form-container" style="display: none;">
+                <h2>Регистрация</h2>
+                <form id="registerFormElement">
+                    <div class="form-group">
+                        <label for="regUsername">Имя пользователя:</label>
+                        <input type="text" id="regUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Пароль:</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+
+            <!-- Главная страница с постами -->
+            <div id="postsContainer" class="posts-container" style="display: none;">
+                <h2>Лента постов</h2>
+                <div id="postsList" class="posts-list">
+                    <!-- Посты будут загружены динамически -->
+                </div>
+            </div>
+
+            <!-- Форма создания поста -->
+            <div id="createPostForm" class="form-container" style="display: none;">
+                <h2>Создать новый пост</h2>
+                <form id="createPostFormElement">
+                    <div class="form-group">
+                        <label for="postTitle">Заголовок:</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Содержимое:</label>
+                        <textarea id="postContent" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Опубликовать</button>
+                </form>
+            </div>
+
+            <!-- Страница профиля -->
+            <div id="profileContainer" class="profile-container" style="display: none;">
+                <h2>Профиль пользователя</h2>
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-details">
+                            <h3 id="profileUsername">Имя пользователя</h3>
+                            <div class="profile-field">
+                                <label>ID:</label>
+                                <span id="profileUserId">user-id</span>
+                            </div>
+                            <div class="profile-field">
+                                <label>Email:</label>
+                                <span id="profileEmail">user@example.com</span>
+                            </div>
+                            <div class="profile-field">
+                                <label>Статус:</label>
+                                <span id="profileStatus" class="profile-status">Без статуса</span>
+                            </div>
+                            <div class="profile-field">
+                                <label>Активен:</label>
+                                <span id="profileActive">Да</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <h4>Изменить статус</h4>
+                        <form id="statusForm">
+                            <div class="form-group">
+                                <label for="statusSelect">Выберите новый статус:</label>
+                                <select id="statusSelect" class="form-select">
+                                    <option value="">Без статуса</option>
+                                    <option value="contemplating_the_void">Размышляет о пустоте</option>
+                                    <option value="pretending_to_work">Притворяется, что работает</option>
+                                    <option value="on_the_verge">На грани</option>
+                                    <option value="running_on_caffeine">Работает на кофеине</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Обновить статус</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 Cynical Circle. Все права не защищены.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
